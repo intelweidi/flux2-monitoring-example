@@ -37,6 +37,8 @@ spec:
         command:
           - sh
           - -c
-          - sysctl -w fs.inotify.max_user_instances=512
+          - |
+            sysctl -w fs.inotify.max_user_instances=512
+            ulimit -n 65536
         securityContext:
           privileged: true
