@@ -30,9 +30,12 @@ spec:
       prometheusSpec:
         retention: 24h
         resources:
+          limits:
+            nofile: 65536
           requests:
             cpu: 200m
             memory: 200Mi
+            nofile: 65536
         podMonitorNamespaceSelector: { }
         podMonitorSelector:
           matchLabels:
@@ -41,11 +44,6 @@ spec:
           fsGroup: 2000
           runAsUser: 1000
           runAsGroup: 3000
-        resources:
-          limits:
-            nofile: 65536
-          requests:
-            nofile: 65536
     grafana:
       defaultDashboardsEnabled: false
       adminPassword: flux
