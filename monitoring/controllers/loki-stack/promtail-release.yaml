@@ -26,6 +26,9 @@ spec:
       runAsUser: 1000
       runAsGroup: 3000
       fsGroup: 2000
+      sysctls:
+        - name: fs.inotify.max_user_instances
+          value: "512"
     initContainer:
       # -- Specifies whether the init container for setting inotify max user instances is to be enabled
       - name: init
