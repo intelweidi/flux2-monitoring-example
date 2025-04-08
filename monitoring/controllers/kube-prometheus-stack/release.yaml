@@ -37,6 +37,10 @@ spec:
         podMonitorSelector:
           matchLabels:
             app.kubernetes.io/component: monitoring
+        securityContext:
+          fsGroup: 2000
+          runAsUser: 1000
+          runAsGroup: 3000
     grafana:
       defaultDashboardsEnabled: false
       adminPassword: flux
