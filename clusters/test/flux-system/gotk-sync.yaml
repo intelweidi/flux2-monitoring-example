@@ -7,11 +7,22 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m0s
+  proxySecretRef:
+    name: http-proxy
   ref:
     branch: main
   secretRef:
     name: flux-system
   url: https://github.com/intelweidi/flux2-monitoring-example.git
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: http-proxy
+  namespace: flux-system
+type: Opaque
+stringData:
+  address: http://proxy-dmz.intel.com:912
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
