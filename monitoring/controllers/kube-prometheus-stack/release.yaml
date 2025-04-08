@@ -27,15 +27,14 @@ spec:
     alertmanager:
       enabled: false
     prometheus:
+      enabled: true
       prometheusSpec:
+        replicas: 1
         retention: 24h
         resources:
-          limits:
-            nofile: 65536
           requests:
             cpu: 200m
             memory: 200Mi
-            nofile: 65536
         podMonitorNamespaceSelector: { }
         podMonitorSelector:
           matchLabels:
